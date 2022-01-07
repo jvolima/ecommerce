@@ -1,0 +1,91 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Client {
+  id              String @id @default(uuid())
+  name            String
+  email           String @unique
+  password        String
+  phone_number    Int
+
+  orders Order[]
+ 
+  @@map("clients")
+}
+
+model Admin {
+  id           String @id @default(uuid())
+  name         String
+  email        String @unique
+  password     String
+
+  @@map("admins")
+}
+
+model Category {
+  id          String @id @default(uuid())
+  name        String
+  description String
+
+  products Product[]
+
+  @@map("categories")
+}
+
+model Product {
+  id                 String @id @default(uuid())
+  name               String
+  description        String
+  id_category        String
+  unit_price         Float
+  quantity_in_stock  Int
+  quantity_ordered   Int
+
+  category Category @relation(fields: [id_category], references:[id])
+
+  productsOrdered ProductOrdered[]
+
+  @@map("products")
+}
+
+model Order {
+  id              String @id @default(uuid())
+  id_client       String
+  created_at      DateTime @default(now())
+  end_at          DateTime?
+  freight         Float
+  address         String
+  city            String
+  cep             Int
+  state           String
+  country         String
+
+  client Client @relation(fields: [id_client], references:[id])
+
+  productsOrdered ProductOrdered[]
+
+  @@map("orders")
+}
+
+model ProductOrdered {
+  id          String @id @default(uuid())
+  id_order    String 
+  id_product  String 
+  quantity    Int
+
+  product Product @relation(fields: [id_product], references:[id])
+  order Order @relation(fields: [id_order], references:[id])
+
+  @@map("products_ordered")
+}
+
+
