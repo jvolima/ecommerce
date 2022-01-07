@@ -48,7 +48,6 @@ model Product {
   id_category        String
   unit_price         Float
   quantity_in_stock  Int
-  quantity_ordered   Int
 
   category Category @relation(fields: [id_category], references:[id])
 
