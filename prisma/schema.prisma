@@ -61,6 +61,7 @@ model Order {
   id_client       String
   created_at      DateTime @default(now())
   end_at          DateTime?
+  total_price     Float?
   freight         Float
   address         String
   city            String
