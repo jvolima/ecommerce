@@ -85,3 +85,31 @@
 
 **RN**
 - Essa rota não é autenticada, ou seja, todos devem ter acesso
+
+## Compras
+
+### Cadastro de compras
+**RF**
+- Deve ser possível cadastrar uma nova compra
+
+**RN**
+- Apenas clientes autenticados tem acesso à essa rota
+
+### Adicionar produtos na compra
+**RF**
+- Deve ser possível adicionar produtos em uma compra
+
+**RN**
+- Apenas clientes autenticados tem acesso à essa rota
+- Não deve ser possível adicionar produtos em uma compra se o id da compra informado não pertencer a nenhuma salva no banco de dados
+- Não deve ser possível adicionar produtos em uma compra se o id do produto informado não pertencer a nenhum salvo no banco de dados
+- Não deve ser possível adicionar produtos em uma compra se a quantidade informado for menor ou igual a zero
+
+### Concluir uma compra
+**RF** 
+- Deve ser possível concluir uma compra
+
+**RN**
+- Apenas clientes autenticados tem acesso à essa rota
+- Não deve ser possível concluir uma compra se a compra já estiver concluída
+- Não deve ser possível concluir uma compra se o id da compra informado não pertencer a nenhuma existente no banco de dados

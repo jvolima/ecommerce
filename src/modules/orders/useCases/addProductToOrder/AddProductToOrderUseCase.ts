@@ -10,6 +10,10 @@ interface IAddProductToOrder {
 
 export class AddProductToOrderUseCase {
   async execute({ id_order, id_product, id_client, quantity }: IAddProductToOrder) {
+    if(quantity <= 0) {
+      throw new Error("Please, enter a valid value for the quantity of products")
+    } 
+
     const order = await prismaClient.order.findFirst({
       where: {
         id: id_order,
