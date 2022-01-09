@@ -9,6 +9,6 @@ const createCategoryController = new CreateCategoryController();
 const listCategoriesController = new ListCategoriesController();
 
 categoryRoutes.post("/", ensureAdminAuthenticated, createCategoryController.handle);
-categoryRoutes.get("/", ensureAdminAuthenticated, listCategoriesController.handle);
+categoryRoutes.get("/", listCategoriesController.handle);
 
 export { categoryRoutes }
