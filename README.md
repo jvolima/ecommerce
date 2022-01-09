@@ -15,7 +15,7 @@
 ## Funcionalidades
 - [Funcionalidades da API](./funcionalidades.md) 
 
-## Como rodar
+## Como executar
 - Abra a pasta do projeto no terminal
 - Execute o comando ```yarn``` para instalar as dependências
 - Pronto, agora é só executar o comando ```yarn dev``` e a aplicação estará rodando em seu computador!
